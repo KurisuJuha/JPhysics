@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace JuhaKurisu.JPhysics
 {
+    [DefaultExecutionOrder(200)]
      public class JPhysics : MonoBehaviour
      {
          
@@ -53,8 +54,9 @@ namespace JuhaKurisu.JPhysics
          }
      
          // Update is called once per frame
-         void Update()
+         void LateUpdate()
          {
+             Debug.Log("physics");
              transform.localPosition += (Vector3)Velocity * Time.deltaTime;
              transform.localRotation *= Quaternion.Euler(new Vector3(0, 0, AngularVelocity * Time.deltaTime));
          }
