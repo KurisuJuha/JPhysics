@@ -11,7 +11,7 @@ namespace JuhaKurisu.JPhysics
         [NonSerialized]
         public List<Triangle> Triangles = new List<Triangle>();
 
-        private List<Triangle> Triangles_N
+        public List<Triangle> Triangles_N
         {
             get
             {
@@ -35,7 +35,7 @@ namespace JuhaKurisu.JPhysics
             }
         }
 
-        private void OnDrawGizmosSelected()
+        private void OnDrawGizmos()
         {
             ChangeValue();
             if (Triangles is { Count: > 0 })
