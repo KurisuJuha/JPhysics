@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    public JTriangleCollider JTriangleCollider;
+    public JCollider JTriangleCollider;
 
-    public JTriangleCollider JTriangleCollider2;
+    public JCollider JTriangleCollider2;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +21,10 @@ public class Test : MonoBehaviour
         {
             Debug.Log(JTriangleCollider.Triangles_N[0].one + "," + JTriangleCollider2.Triangles_N[0].one);
         }
-        if (JPhysics.Tri_TriDetection(JTriangleCollider.Triangles_N[0] , JTriangleCollider2.Triangles_N[0]))
+
+        if (JPhysics.CollisionDetection(JTriangleCollider,JTriangleCollider2))
         {
-            Debug.Log("y");
+            Debug.Log("c");
         }
     }
 }

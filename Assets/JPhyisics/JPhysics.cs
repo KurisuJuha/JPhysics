@@ -119,10 +119,29 @@ namespace JuhaKurisu.JPhysics
          {
              List<Triangle> tris1 = jCollider1.Triangles_N;
              List<Triangle> tris2 = jCollider2.Triangles_N;
+
+             bool ret = false;
              
+             for (int i1 = 0; i1 < tris1.Count; i1++)
+             {
+                 for (int i2 = 0; i2 < tris2.Count; i2++)
+                 {
+                     ret = Tri_TriDetection(tris1[i1], tris2[i2]);
+                     
+                     // もしretがtrueならもう計算する必要が無いので抜ける
+                     if (ret)
+                     {
+                         break;
+                     }
+                 }
+                 // もしretがtrueならもう計算する必要が無いので抜ける
+                 if (ret)
+                 {
+                     break;
+                 }
+             }
              
-             
-             return false;
+             return ret;
          }
      }
 }
