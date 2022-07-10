@@ -9,6 +9,9 @@ namespace JuhaKurisu.JPhysics
     [DefaultExecutionOrder(100)]
     public class JTriangleCollider : JCollider
     {
+        /// <summary>
+        /// コライダーとなるトライアングル
+        /// </summary>
         public Triangle triangle;
 
         public override void ChangeValue()

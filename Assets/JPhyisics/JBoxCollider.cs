@@ -7,7 +7,13 @@ namespace JuhaKurisu.JPhysics
     [DefaultExecutionOrder(100)]
     public class JBoxCollider : JCollider
     {
+        /// <summary>
+        /// コライダーとなる四角形の相対的な座標
+        /// </summary>
         public Vector2 position;
+        /// <summary>
+        /// コライダーとなる四角形の相対的な大きさ
+        /// </summary>
         public Vector2 size;
 
         public override void ChangeValue()

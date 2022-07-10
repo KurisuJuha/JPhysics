@@ -57,7 +57,7 @@ namespace JuhaKurisu.JPhysics
         }
 
         /// <summary>
-        /// aaa
+        /// 派生クラスの値をTrianglesにセットします。
         /// </summary>
         public virtual void ChangeValue()
         {
