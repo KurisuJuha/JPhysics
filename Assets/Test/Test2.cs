@@ -16,7 +16,7 @@ public class Test2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        JCollision[] cols = JPhysics.Detection(gameObject);
+        JCollision[] cols = JPhysics.Detection();
         if (cols.Length > 0)
         {
             Debug.Log(cols.Length);

@@ -258,7 +258,16 @@ namespace JuhaKurisu.JPhysics
         }
 
         /// <summary>
-        /// 全てのオブジェクトに対して衝突しているかどうかを判定します。
+        /// 自身が全てのオブジェクトに対して衝突しているかどうかを判定します。
+        /// </summary>
+        /// <returns>衝突しているコライダーの配列</returns>
+        public JCollision[] Detection()
+        {
+            return Detection(gameObject);
+        }
+
+        /// <summary>
+        /// 指定されたオブジェクトが全てのオブジェクトに対して衝突しているかどうかを判定します。
         /// </summary>
         /// <param name="gameObject">衝突を検知するオブジェクト</param>
         /// <returns>衝突しているコライダーの配列</returns>
