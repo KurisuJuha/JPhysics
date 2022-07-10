@@ -53,6 +53,15 @@ namespace JuhaKurisu.JPhysics
             }
         }
 
+        /// <summary>
+        /// スタティックかどうか
+        /// スタティックの場合毎フレームの処理は発生せず、当たり判定のみ機能します。
+        /// </summary>
+        public bool isStatic;
+
+        /// <summary>
+        /// シーンにあるJPhysicsのリスト
+        /// </summary>
         public static List<JPhysics> JPhysicsList = new List<JPhysics>();
 
 
@@ -69,8 +78,11 @@ namespace JuhaKurisu.JPhysics
 
         private void LateUpdate()
         {
-            transform.localPosition += (Vector3)Velocity * Time.deltaTime;
-            transform.localRotation *= Quaternion.Euler(new Vector3(0, 0, AngularVelocity * Time.deltaTime));
+            if (!isStatic)
+            {
+                transform.localPosition += (Vector3)Velocity * Time.deltaTime;
+                transform.localRotation *= Quaternion.Euler(new Vector3(0, 0, AngularVelocity * Time.deltaTime));
+            }
         }
 
         /// <summary>
@@ -280,6 +292,11 @@ namespace JuhaKurisu.JPhysics
             }
 
             return jCollisions.ToArray();
+        }
+
+        private void OnDestroy()
+        {
+            JPhysicsList.Remove(this);
         }
     }
 }
