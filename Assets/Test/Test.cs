@@ -11,7 +11,7 @@ public class Test : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class Test : MonoBehaviour
             Debug.Log(JTriangleCollider.Triangles_N[0].one + "," + JTriangleCollider2.Triangles_N[0].one);
         }
 
-        if (JPhysics.CollisionDetection(JTriangleCollider,JTriangleCollider2))
+        if (JPhysics.CollisionsDetection(JTriangleCollider, JTriangleCollider2))
         {
             Debug.Log("c");
         }

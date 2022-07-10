@@ -21,13 +21,13 @@ namespace JuhaKurisu.JPhysics
             tri1.one = pos1;
             tri1.two = pos2;
             tri1.thr = pos3;
-            
+
             Triangle tri2 = new Triangle();
             tri2.one = pos1;
             tri2.two = pos3;
             tri2.thr = pos4;
-            
-            
+
+
             if (Triangles.Count > 0)
             {
                 Triangles[0] = tri1;
