@@ -8,6 +8,12 @@ namespace JuhaKurisu.JPhysics
     public class JPhysics : MonoBehaviour
     {
         /// <summary>
+        /// スタティックかどうか
+        /// スタティックの場合毎フレームの処理は発生せず、当たり判定のみ機能します。
+        /// </summary>
+        public bool isStatic;
+
+        /// <summary>
         /// 移動の強さのリスト
         /// </summary>
         public List<Vector2> Velocities = new List<Vector2>(512);
@@ -52,12 +58,6 @@ namespace JuhaKurisu.JPhysics
                 return v;
             }
         }
-
-        /// <summary>
-        /// スタティックかどうか
-        /// スタティックの場合毎フレームの処理は発生せず、当たり判定のみ機能します。
-        /// </summary>
-        public bool isStatic;
 
         /// <summary>
         /// シーンにあるJPhysicsのリスト
