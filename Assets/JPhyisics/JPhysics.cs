@@ -54,7 +54,6 @@ namespace JuhaKurisu.JPhysics
         }
 
 
-        // Start is called before the first frame update
         private void Awake()
         {
             for (int i = 0; i < 512; i++)
@@ -64,7 +63,6 @@ namespace JuhaKurisu.JPhysics
             }
         }
 
-        // Update is called once per frame
         private void LateUpdate()
         {
             transform.localPosition += (Vector3)Velocity * Time.deltaTime;
@@ -79,6 +77,25 @@ namespace JuhaKurisu.JPhysics
         public void AddForce(Vector2 power, int layer)
         {
             Velocities[layer] += power * Time.deltaTime;
+        }
+
+        /// <summary>
+        /// このゲームオブジェクトにアタッチされているJColliderを継承しているコンポーネントを取得できます。
+        /// </summary>
+        /// <returns>取得したコライダー</returns>
+        public JCollider[] GetColliders()
+        {
+            return GetColliders(gameObject);
+        }
+
+        /// <summary>
+        /// ゲームオブジェクトにアタッチされているJColliderを継承しているコンポーネントを取得できます。
+        /// </summary>
+        /// <param name="gameObject">取得の対象のゲームオブジェクト</param>
+        /// <returns>取得したコライダー</returns>
+        public static JCollider[] GetColliders(GameObject gameObject)
+        {
+            return gameObject.GetComponents<JCollider>();
         }
 
         /// <summary>
