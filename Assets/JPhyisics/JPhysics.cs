@@ -82,7 +82,7 @@ namespace JuhaKurisu.JPhysics
         /// <summary>
         /// このゲームオブジェクトにアタッチされているJColliderを継承しているコンポーネントを取得できます。
         /// </summary>
-        /// <returns>取得したコライダー</returns>
+        /// <returns>取得したコライダーの配列</returns>
         public JCollider[] GetColliders()
         {
             return GetColliders(gameObject);
@@ -92,7 +92,7 @@ namespace JuhaKurisu.JPhysics
         /// ゲームオブジェクトにアタッチされているJColliderを継承しているコンポーネントを取得できます。
         /// </summary>
         /// <param name="gameObject">取得の対象のゲームオブジェクト</param>
-        /// <returns>取得したコライダー</returns>
+        /// <returns>取得したコライダーの配列</returns>
         public static JCollider[] GetColliders(GameObject gameObject)
         {
             return gameObject.GetComponents<JCollider>();
@@ -166,7 +166,7 @@ namespace JuhaKurisu.JPhysics
         /// <param name="jCollider1">一つ目のコライダー</param>
         /// <param name="jCollider2">二つ目のコライダー</param>
         /// <returns>二つのコライダーが衝突しているかどうか</returns>
-        public static bool CollisionsDetection(JCollider jCollider1, JCollider jCollider2)
+        public static bool ColliderDetection(JCollider jCollider1, JCollider jCollider2)
         {
             List<Triangle> tris1 = jCollider1.Triangles_N;
             List<Triangle> tris2 = jCollider2.Triangles_N;
@@ -193,6 +193,64 @@ namespace JuhaKurisu.JPhysics
             }
 
             return ret;
+        }
+
+        /// <summary>
+        /// オブジェクトが衝突しているかどうかを判定できます。
+        /// </summary>
+        /// <param name="gameObject">衝突対象のオブジェクト</param>
+        /// <returns>衝突しているコライダーの配列</returns>
+        public JCollision[] ObjectDetection(GameObject gameObject)
+        {
+            return ObjectDetection(this.gameObject, gameObject);
+        }
+
+        /// <summary>
+        /// 二つのオブジェクトが衝突しているかどうかを判定できます。
+        /// </summary>
+        /// <param name="gameObject1">一つ目のオブジェクト</param>
+        /// <param name="gameObject2">二つ目のオブジェクト</param>
+        /// <returns>衝突しているコライダーの配列</returns>
+        public static JCollision[] ObjectDetection(GameObject gameObject1, GameObject gameObject2)
+        {
+            JCollider[] colliders1 = GetColliders(gameObject1);
+            JCollider[] colliders2 = GetColliders(gameObject2);
+            List<JCollision> collisions = new List<JCollision>();
+
+            foreach (JCollider item in colliders1)
+            {
+                foreach (JCollider item2 in colliders2)
+                {
+                    if (ColliderDetection(item, item2))
+                    {
+                        //JCollisionを作る
+                        JCollision collision = new JCollision();
+
+                        //自分の方
+                        collision._gameObject = item.gameObject;
+                        collision._transform = item.transform;
+                        if (item.TryGetComponent(out JPhysics _jPhysics))
+                        {
+                            collision._JPhysics = _jPhysics;
+                        }
+                        collision._JCollider = item;
+
+                        //相手の方
+                        collision.gameObject = item2.gameObject;
+                        collision.transform = item2.transform;
+                        if (item2.TryGetComponent(out JPhysics jPhysics))
+                        {
+                            collision.JPhysics = jPhysics;
+                        }
+                        collision.JCollider = item2;
+
+
+                        collisions.Add(collision);
+                    }
+                }
+            }
+
+            return collisions.ToArray();
         }
     }
 }

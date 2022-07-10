@@ -9,6 +9,9 @@ public class Test : MonoBehaviour
 
     public JCollider JTriangleCollider2;
 
+    public GameObject object1;
+    public GameObject object2;
+
     void Start()
     {
 
@@ -21,9 +24,15 @@ public class Test : MonoBehaviour
             Debug.Log(JTriangleCollider.Triangles_N[0].one + "," + JTriangleCollider2.Triangles_N[0].one);
         }
 
-        if (JPhysics.CollisionsDetection(JTriangleCollider, JTriangleCollider2))
+        if (JPhysics.ColliderDetection(JTriangleCollider, JTriangleCollider2))
         {
             Debug.Log("c");
+        }
+
+        JCollision[] col = JPhysics.ObjectDetection(object1, object2);
+        if (col.Length > 0)
+        {
+            Debug.Log(col[0].gameObject.name + "," + col.Length);
         }
     }
 }
