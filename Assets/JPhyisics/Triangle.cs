@@ -8,24 +8,25 @@ namespace JuhaKurisu.JPhysics
     [Serializable]
     public struct Triangle
     {
+        /// <summary>
+        /// 一つ目の頂点
+        /// </summary>
         public Vector2 one;
+
+        /// <summary>
+        /// 二つ目の頂点
+        /// </summary>
         public Vector2 two;
+
+        /// <summary>
+        /// 三つ目の頂点
+        /// </summary>
         public Vector2 thr;
 
-        public override bool Equals(object obj)
+        public override int GetHashCode()
         {
-            bool ret = true;
 
-            if (obj != null)
-            {
-                Triangle tri = (Triangle)obj;
-                ret = tri.one == one;
-                ret = ret && tri.two == two;
-                ret = ret && tri.thr == thr;
-                return ret;
-            }
-
-            return false;
+            return one.GetHashCode() ^ two.GetHashCode() ^ thr.GetHashCode();
         }
     }
 }
