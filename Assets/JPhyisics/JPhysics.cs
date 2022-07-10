@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JuhaKurisu.JPhysics
 {
-    [DefaultExecutionOrder(200)]
+    [DefaultExecutionOrder(200), DisallowMultipleComponent]
     public class JPhysics : MonoBehaviour
     {
         /// <summary>
@@ -53,6 +53,8 @@ namespace JuhaKurisu.JPhysics
             }
         }
 
+        public static List<JPhysics> JPhysicsList = new List<JPhysics>();
+
 
         private void Awake()
         {
@@ -61,6 +63,8 @@ namespace JuhaKurisu.JPhysics
                 Velocities.Add(Vector2.zero);
                 AngularVelocities.Add(0);
             }
+
+            JPhysicsList.Add(this);
         }
 
         private void LateUpdate()
@@ -251,6 +255,22 @@ namespace JuhaKurisu.JPhysics
             }
 
             return collisions.ToArray();
+        }
+
+        /// <summary>
+        /// 全てのオブジェクトに対して衝突しているかどうかを判定します。
+        /// </summary>
+        /// <param name="gameObject">衝突を検知するオブジェクト</param>
+        /// <returns>衝突しているコライダーの配列</returns>
+        public static JCollision[] Detection(GameObject gameObject)
+        {
+            List<JCollision> jCollisions = new List<JCollision>();
+            foreach (JPhysics jPhysics in JPhysicsList)
+            {
+                jCollisions.AddRange(ObjectDetection(gameObject, jPhysics.gameObject));
+            }
+
+            return jCollisions.ToArray();
         }
     }
 }
