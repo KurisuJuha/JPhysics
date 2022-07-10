@@ -8,9 +8,15 @@ namespace JuhaKurisu.JPhysics
     [DefaultExecutionOrder(100)]
     public abstract class JCollider : MonoBehaviour
     {
+        /// <summary>
+        /// 衝突判定に使用するトライアングルのリスト
+        /// </summary>
         [NonSerialized]
         public List<Triangle> Triangles = new List<Triangle>();
 
+        /// <summary>
+        /// 衝突判定に使用するトライアングルのリストの位置にオブジェクトのスケール、位置を対応させたリスト
+        /// </summary>
         public List<Triangle> Triangles_N
         {
             get
@@ -50,6 +56,9 @@ namespace JuhaKurisu.JPhysics
             }
         }
 
+        /// <summary>
+        /// aaa
+        /// </summary>
         public virtual void ChangeValue()
         {
             
