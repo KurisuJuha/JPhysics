@@ -14,6 +14,26 @@ namespace JuhaKurisu.JPhysics
         public bool isStatic;
 
         /// <summary>
+        /// 面積を自動で設定します
+        /// </summary>
+        public bool AutoArea;
+
+        /// <summary>
+        /// コライダーの面積
+        /// </summary>
+        public float Area;
+
+        /// <summary>
+        /// 質量を自動で設定します
+        /// </summary>
+        public bool AutoMass;
+
+        /// <summary>
+        /// 質量
+        /// </summary>
+        public float Mass;
+
+        /// <summary>
         /// 移動の強さのリスト
         /// </summary>
         public List<Vector2> Velocities = new List<Vector2>(512);
