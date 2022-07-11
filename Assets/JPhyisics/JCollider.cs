@@ -29,10 +29,23 @@ namespace JuhaKurisu.JPhysics
 
                     Vector3 scale = transform.localScale;
                     Vector3 pos = transform.position;
+                    Quaternion rot = transform.rotation;
 
-                    tri.one = Triangles[i].one * scale + (Vector2)pos;
-                    tri.two = Triangles[i].two * scale + (Vector2)pos;
-                    tri.thr = Triangles[i].thr * scale + (Vector2)pos;
+                    tri.one = Triangles[i].one;
+                    tri.two = Triangles[i].two;
+                    tri.thr = Triangles[i].thr;
+
+                    tri.one = tri.one * scale;
+                    tri.two = tri.two * scale;
+                    tri.thr = tri.thr * scale;
+
+                    tri.one = rot * tri.one;
+                    tri.two = rot * tri.two;
+                    tri.thr = rot * tri.thr;
+                    
+                    tri.one = tri.one + (Vector2)pos;
+                    tri.two = tri.two + (Vector2)pos;
+                    tri.thr = tri.thr + (Vector2)pos;
 
                     tris.Add(tri);
                 }
