@@ -100,6 +100,18 @@ namespace JuhaKurisu.JPhysics
         {
             if (!isStatic)
             {
+                if (AutoArea)
+                {
+                    // 面積を算出
+
+
+                }
+
+                if (AutoMass)
+                {
+                    // 質量を算出
+                }
+
                 transform.localPosition += (Vector3)Velocity * Time.deltaTime;
                 transform.localRotation *= Quaternion.Euler(new Vector3(0, 0, AngularVelocity * Time.deltaTime));
             }
