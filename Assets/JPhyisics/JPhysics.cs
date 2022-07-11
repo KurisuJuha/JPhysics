@@ -184,6 +184,8 @@ namespace JuhaKurisu.JPhysics
         /// <returns>二つのコライダーが衝突しているかどうか</returns>
         public static bool ColliderDetection(JCollider jCollider1, JCollider jCollider2)
         {
+
+
             List<Triangle> tris1 = jCollider1.Triangles_N;
             List<Triangle> tris2 = jCollider2.Triangles_N;
 
@@ -216,7 +218,7 @@ namespace JuhaKurisu.JPhysics
         /// </summary>
         /// <param name="gameObject">衝突対象のオブジェクト</param>
         /// <returns>衝突しているコライダーの配列</returns>
-        public JCollision[] ObjectDetection(GameObject gameObject)
+        public JCollisions ObjectDetection(GameObject gameObject)
         {
             return ObjectDetection(this.gameObject, gameObject);
         }
@@ -227,7 +229,7 @@ namespace JuhaKurisu.JPhysics
         /// <param name="gameObject1">一つ目のオブジェクト</param>
         /// <param name="gameObject2">二つ目のオブジェクト</param>
         /// <returns>衝突しているコライダーの配列</returns>
-        public static JCollision[] ObjectDetection(GameObject gameObject1, GameObject gameObject2)
+        public static JCollisions ObjectDetection(GameObject gameObject1, GameObject gameObject2)
         {
             JCollider[] colliders1 = GetColliders(gameObject1);
             JCollider[] colliders2 = GetColliders(gameObject2);
@@ -266,14 +268,18 @@ namespace JuhaKurisu.JPhysics
                 }
             }
 
-            return collisions.ToArray();
+            return new JCollisions()
+            {
+                collisions = collisions.ToArray(),
+                onCollision = collisions.Count > 0
+            };
         }
 
         /// <summary>
         /// 自身が全てのオブジェクトに対して衝突しているかどうかを判定します。
         /// </summary>
         /// <returns>衝突しているコライダーの配列</returns>
-        public JCollision[] Detection()
+        public JCollisions Detection()
         {
             return Detection(gameObject);
         }
@@ -283,15 +289,19 @@ namespace JuhaKurisu.JPhysics
         /// </summary>
         /// <param name="gameObject">衝突を検知するオブジェクト</param>
         /// <returns>衝突しているコライダーの配列</returns>
-        public static JCollision[] Detection(GameObject gameObject)
+        public static JCollisions Detection(GameObject gameObject)
         {
             List<JCollision> jCollisions = new List<JCollision>();
             foreach (JPhysics jPhysics in JPhysicsList)
             {
-                jCollisions.AddRange(ObjectDetection(gameObject, jPhysics.gameObject));
+                jCollisions.AddRange(ObjectDetection(gameObject, jPhysics.gameObject).collisions);
             }
 
-            return jCollisions.ToArray();
+            return new JCollisions()
+            {
+                collisions = jCollisions.ToArray(),
+                onCollision = jCollisions.Count > 0
+            };
         }
 
         private void OnDestroy()

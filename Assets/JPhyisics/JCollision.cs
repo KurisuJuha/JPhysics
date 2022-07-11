@@ -46,4 +46,17 @@ namespace JuhaKurisu.JPhysics
         /// </summary>
         public JCollider _JCollider;
     }
+
+    public class JCollisions
+    {
+        /// <summary>
+        /// ƒRƒŠƒWƒ‡ƒ“‚Ì”z—ñ
+        /// </summary>
+        public JCollision[] collisions;
+
+        /// <summary>
+        /// Õ“Ë‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
+        /// </summary>
+        public bool onCollision;
+    }
 }

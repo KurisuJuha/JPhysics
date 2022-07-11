@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace JuhaKurisu.JPhysics
 {
-    [DefaultExecutionOrder(100)]
+    [DefaultExecutionOrder(100), RequireComponent(typeof(JPhysics))]
     public abstract class JCollider : MonoBehaviour
     {
         /// <summary>
