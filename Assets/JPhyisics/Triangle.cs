@@ -32,7 +32,8 @@ namespace JuhaKurisu.JPhysics
         /// <summary>
         /// トライアングルの面積を算出できます。
         /// </summary>
-        /// <returns>トライアングルの面積</returns>
+        /// <returns>トライアングルの面積
+        /// </returns>
         public float TriangleArea()
         {
             return TriangleArea(one, two, thr);
