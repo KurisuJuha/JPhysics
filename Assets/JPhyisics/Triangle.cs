@@ -8,6 +8,7 @@ namespace JuhaKurisu.JPhysics
     [Serializable]
     public struct Triangle
     {
+        [Header("Points")]
         /// <summary>
         /// ˆê‚Â–Ú‚Ì’¸“_
         /// </summary>

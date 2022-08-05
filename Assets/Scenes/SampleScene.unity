@@ -155,6 +155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff8e25b86e6d1e4094eda72e73b216d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoMass: 1
+  Mass: 0
+  AutoCenterOfMass: 1
+  CenterOfMass: {x: 0, y: 0}
   triangle:
     one: {x: 1, y: 0.5}
     two: {x: 1.5, y: -0.5}
@@ -172,6 +176,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 0
+  AutoMass: 0
+  Mass: 0
+  AutoCenterOfMass: 1
+  CenterOfMass: {x: 0, y: 0}
   Velocities: []
   AngularVelocities: []
 --- !u!212 &232995786
@@ -253,6 +261,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff8e25b86e6d1e4094eda72e73b216d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoMass: 1
+  Mass: 0
+  AutoCenterOfMass: 1
+  CenterOfMass: {x: 0, y: 0}
   triangle:
     one: {x: 0, y: 0.5}
     two: {x: 0.5, y: -0.5}
@@ -354,10 +366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3030d1e5bf9fef742bdcccd45906838f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JTriangleCollider: {fileID: 1692717530}
-  JTriangleCollider2: {fileID: 0}
-  object1: {fileID: 1692717526}
-  object2: {fileID: 232995783}
 --- !u!1 &1143170447
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +446,7 @@ Transform:
   m_GameObject: {fileID: 1143170447}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 10.76, y: 0.93, z: 0}
-  m_LocalScale: {x: 2.8765357, y: 3.0552897, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -456,6 +464,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb009a4d1accdb4195aa53d53138480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoMass: 1
+  Mass: 0
+  AutoCenterOfMass: 1
+  CenterOfMass: {x: 0, y: 0}
   position: {x: 0, y: 0}
   size: {x: 1, y: 1}
 --- !u!114 &1143170452
@@ -471,6 +483,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 0
+  AutoMass: 0
+  Mass: 0
+  AutoCenterOfMass: 1
+  CenterOfMass: {x: 0, y: 0}
   Velocities: []
   AngularVelocities: []
 --- !u!1 &1601871403
@@ -518,6 +534,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff8e25b86e6d1e4094eda72e73b216d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoMass: 1
+  Mass: 0
+  AutoCenterOfMass: 0
+  CenterOfMass: {x: 0, y: 0}
   triangle:
     one: {x: 0, y: 0.5}
     two: {x: 0.5, y: -0.5}
@@ -535,6 +555,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 0
+  AutoMass: 0
+  Mass: 0
+  AutoCenterOfMass: 1
+  CenterOfMass: {x: 0, y: 0}
   Velocities: []
   AngularVelocities: []
 --- !u!212 &1601871407
@@ -636,6 +660,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStatic: 0
+  AutoMass: 0
+  Mass: 0
+  AutoCenterOfMass: 1
+  CenterOfMass: {x: 0, y: 0}
   Velocities: []
   AngularVelocities: []
 --- !u!212 &1692717528
@@ -697,14 +725,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1692717526}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.42, y: 1.98, z: 0}
-  m_LocalScale: {x: 2.0721836, y: 5.6434937, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.5034058, w: 0.8640501}
+  m_LocalPosition: {x: -4.23, y: 2.01, z: 0}
+  m_LocalScale: {x: 2.38757, y: 5.6434937, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -60.451}
 --- !u!114 &1692717530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,6 +745,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff8e25b86e6d1e4094eda72e73b216d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoMass: 1
+  Mass: 0
+  AutoCenterOfMass: 1
+  CenterOfMass: {x: 0, y: 0}
   triangle:
     one: {x: 0, y: 0.5}
     two: {x: 0.5, y: -0.5}

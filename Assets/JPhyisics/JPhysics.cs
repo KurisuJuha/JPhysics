@@ -13,26 +13,30 @@ namespace JuhaKurisu.JPhysics
         /// </summary>
         public bool isStatic;
 
-        /// <summary>
-        /// 面積を自動で設定します
-        /// </summary>
-        public bool AutoArea;
-
-        /// <summary>
-        /// コライダーの面積
-        /// </summary>
-        public float Area;
+        [Header("Mass")]
 
         /// <summary>
         /// 質量を自動で設定します
         /// </summary>
-        public bool AutoMass;
+        public bool AutoMass = true;
 
         /// <summary>
         /// 質量
         /// </summary>
         public float Mass;
 
+        [Header("CenterOfMass")]
+        /// <summary>
+        /// 重心を自動で設定します
+        /// </summary>
+        public bool AutoCenterOfMass = true;
+
+        /// <summary>
+        /// 重心
+        /// </summary>
+        public Vector2 CenterOfMass;
+
+        [Header("Velocity")]
         /// <summary>
         /// 移動の強さのリスト
         /// </summary>
@@ -100,13 +104,6 @@ namespace JuhaKurisu.JPhysics
         {
             if (!isStatic)
             {
-                if (AutoArea)
-                {
-                    // 面積を算出
-
-
-                }
-
                 if (AutoMass)
                 {
                     // 質量を算出
