@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 namespace JuhaKurisu.JPhysics
 {
@@ -35,6 +36,11 @@ namespace JuhaKurisu.JPhysics
         /// 重心
         /// </summary>
         public Vector2 CenterOfMass;
+
+        /// <summary>
+        /// 絶対座標の重心
+        /// </summary>
+        public Vector2 CenterOfMass_N;
 
         [Header("Velocity")]
         /// <summary>
@@ -88,6 +94,10 @@ namespace JuhaKurisu.JPhysics
         /// </summary>
         public static List<JPhysics> JPhysicsList = new List<JPhysics>();
 
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawSphere((Vector3)CenterOfMass_N, 0.1f);
+        }
 
         private void Awake()
         {
@@ -107,10 +117,49 @@ namespace JuhaKurisu.JPhysics
                 if (AutoMass)
                 {
                     // 質量を算出
+                    float mass = 0;
+
+                    foreach (var item in GetColliders())
+                    {
+                        mass += item.Mass;
+                    }
+
+                    Mass = mass;
+                }
+
+                if (AutoCenterOfMass)
+                {
+                    // 重心を算出
+                    Vector2 a = new Vector2();
+                    float amass = 0;
+
+                    var cols = GetColliders();
+                    
+                    for (int i = 0; i < cols.Length; i++)
+                    {
+                        Vector2 b = cols[i].CenterOfMass;
+
+                        if (i == 0)
+                        {
+                            amass = cols[i].Mass;
+                            a = b;
+                        }
+                        else
+                        {
+                            a = amass * (a + b) / (amass + cols[i].Mass);
+                        }
+                    }
+
+                    CenterOfMass = a;
+
+                    CenterOfMass_N = CenterOfMass;
+                    CenterOfMass_N *= transform.localScale;
+                    CenterOfMass_N = transform.rotation * CenterOfMass_N;
+                    CenterOfMass_N += (Vector2)transform.position;
                 }
 
                 transform.localPosition += (Vector3)Velocity * Time.deltaTime;
-                transform.localRotation *= Quaternion.Euler(new Vector3(0, 0, AngularVelocity * Time.deltaTime));
+                transform.RotateAround(CenterOfMass_N, Vector3.forward, AngularVelocity * Time.deltaTime);
             }
         }
 
